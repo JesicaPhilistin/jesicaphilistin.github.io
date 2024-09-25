@@ -1,0 +1,38 @@
+﻿<h3>CalculatorComponent</h3>
+<p>This component will help convert between celsius and fahrenheit</p>
+
+<div class="mb-3">
+    <label class="form-label">Amount in Celcius</label>
+    <NumberInput TValue="int" @bind-Value="@amount" Placeholder="Enter amount" />
+</div>
+<div class="mb-3">Fahrenheit: @ConvertCtoF(amount)</div>
+
+
+<p>This component will help convert between feet and inches </p>
+<div class="mb-3">
+    <label class="form-label">Amount in Feet</label>
+    <NumberInput TValue="decimal " @bind-Value="@(amount2)" Placeholder="Enter amount" />
+</div>
+<div class="mb-3">Inches: @ConvertFeetToInches(amount2,amount)</div>
+
+
+
+@code {
+    private int amount;
+    //(1 celcius * 9/5) + 32 = 33.8 fahrenheit)
+    private decimal ConvertCtoF(decimal celsius)
+    {
+        return (celsius * 9 / 5) + 32;
+    }
+
+ @code {
+        private decimal  amount2;
+        private decimal ConvertFeetToInches(decimal feet, decimal inches)
+        {
+            
+            return feet * 12 + inches ;
+        }
+    }
+
+}
+

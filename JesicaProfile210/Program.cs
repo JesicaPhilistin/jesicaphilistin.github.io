@@ -7,6 +7,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddBlazorBootstrap(); //Added to give us access to the BlazorBootstrap CSS framework we will work with
 
 await builder.Build().RunAsync();
 //

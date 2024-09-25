@@ -1,0 +1,49 @@
+﻿@page "/basal-metabolic-calculator"
+
+<h1>BasalMetabolicCalculator</h1>
+<BMRComponent> </BMRComponent> 
+
+<p>This component will tell you your BMR </p>
+<div class="mb-3">
+    <label class="form-label"></label>
+    <NumberInput TValue="double " @bind-Value="@weight" Placeholder="Weight (kg)" />
+</div>
+<div class="mb-3">
+    <label class="form-label"></label>
+    <NumberInput TValue="double " @bind-Value="@height" Placeholder="Height (cm)" />
+</div>
+<div class="mb-3">
+    <label class="form-label"></label>
+    <NumberInput TValue="int " @bind-Value="@age" Placeholder="Age" />
+    </div>
+ <div class=mb-3>
+     <label class="form-label"></label>
+    <select @bind="gender"/>
+        <option value="Male">Male </option>
+       <option value="Female">Female </option>
+    <select/>
+ </div>
+ <div class="mb-3">
+        <button @onclick="CalculateBMR">Calculate</button>
+        <p>Your BMR is: @bmr kcal/day</p>
+<div class="mb-3">BMR: @CalculateBMR</div>
+</div>
+ 
+
+@code {
+    private double weight;
+    private double height;
+    private int age;
+    private string gender;
+    private double bmr;
+
+    private void CalculateBMR()
+    {
+        if (gender == "Male")
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+        else if (gender == "Female")
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        else
+            bmr = 0; // Handle case where gender is not set
+    }
+}
