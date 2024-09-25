@@ -1,0 +1,80 @@
+﻿<h1>Basal Metabolic Calculator</h1>
+
+
+<p>This component will tell you your BMR </p>
+<div class="mb-3">
+    <label class="form-label">What is your weight?(kg)</label>
+    <NumberInput TValue="double " @bind-Value="@weight" Placeholder="Weight (kg)" />
+</div>
+<div class="mb-3">
+    <label class="form-label">What is your height? (cm)</label>
+    <NumberInput TValue="double " @bind-Value="@height" Placeholder="Height (cm)" />
+</div>
+<div class="mb-3">
+    <label class="form-label">How old are you?(years)</label>
+    <NumberInput TValue="int " @bind-Value="@age" Placeholder="Age" />
+</div>
+@* <div class=mb-3>
+    <label class="form-label"></label> *@
+
+    <select @bind="gender" >
+<option value="" disabled>Select Gender</option>
+    <option value="Male">Male </option>
+    <option value="Female">Female </option>
+    </select >
+
+@* </div> *@
+<div class="mb-3">
+    <button @onclick="()=> CalculateBMR()">Calculate</button>
+     <p>Your BMR is: @bmr kcal/day</p> 
+@*     <div class="mb-3">BMR: @CalculateBMR</div> *@
+</div>
+@if (bmr > 0)
+{
+    <p>Your BMR is: @bmr kcal/day</p>
+}
+else if (calculationError)
+{
+    <p>Please fill out all fields correctly.</p>
+}
+
+
+@code {
+    private double weight;
+    private double height;
+    private int age;
+    private string gender;
+    private double bmr;
+    private bool calculationError = false;
+    bool isMale = false;
+
+
+    private void CalculateBMR()
+    {
+        //   if (isMale==true)
+        //   {
+        //       gender = "Male";
+        //       bmr =(10 * weight) + (6.25 * height) - (5 * age) + 5;
+        //   }
+        //   else if (isMale==false) {
+        //       gender ="Female";
+        //       bmr= (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        //   }
+        //   else {
+        //       calculationError = true;
+        //       bmr= 0;
+        //   }
+        // return bmr
+        if (isMale)
+        {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+        }
+        else
+        {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        }
+
+        
+   
+}
+}

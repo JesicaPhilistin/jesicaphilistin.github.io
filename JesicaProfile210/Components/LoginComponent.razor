@@ -1,0 +1,56 @@
+﻿<h3>LoginComponent</h3>
+<p>This component will capture the following:</p>
+
+<div class="mb-3">
+    <label class="form-label">Username</label>
+    <NumberInput TValue="string" @bind-Value="@(username)" Placeholder="Enter username" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Email</label>
+    <NumberInput TValue="string" @bind-Value="@(email)" Placeholder="Enter email" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Password</label>
+    <NumberInput TValue="string" @bind-Value="@(password)" Placeholder="Enter password" />
+</div>
+<div class="mb-3">
+    <button @onclick="Login">Login</button>
+    <p>"You are logged in"</p>
+</div>
+
+@* <div class="mb-3">Register:@Login()</div> *@
+
+@if(isloggedIn)
+{
+    <p>You are logged in</p>
+}
+else
+{
+    <p>You are not logged in</p>
+})
+
+
+
+@code {
+    private string username;
+    private string email;
+    private string password;
+    //  private string confirmPassword;
+    private bool isloggedIn = false;
+
+    private void Login()
+    {
+
+        if (username == "admin") 
+        {
+            if (username == "admin@github.io" && password == "WOPR")
+            {
+              isloggedIn = true;
+            }
+        }
+
+}
+
+}
