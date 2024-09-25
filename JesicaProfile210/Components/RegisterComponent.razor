@@ -1,0 +1,67 @@
+﻿<h3>RegisterComponent</h3>
+<p>This component will capture the following:</p>
+
+<div class="mb-3">
+    <label class="form-label">Username</label>
+    <InputText TValue="string" @bind-Value="@(username)" Placeholder="Enter username" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Email</label>
+    <InputText TValue="string" @bind-Value="@(email)" Placeholder="Enter email" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Password</label>
+    <InputText TValue="string" @bind-Value="@(password)" Placeholder="Enter password" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Confirm Password</label>
+    <InputText TValue="string" @bind-Value="@(confirmPassword)" Placeholder="Confirm Password" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Date of Birth</label>
+    <DateInput TValue="DateTime" @bind-Value="@(DOB)" Placeholder="Enter date of birth" />
+</div>
+ <div class="mb-3">
+        <button @onclick="Register_Click">Register</button>
+    <p>"You are logged in"</p>
+    </div>
+
+<div class="mb-3">Register:@Register()</div>
+
+
+
+
+
+
+
+@code {
+    private string username;
+    private string email;
+    private string password;
+    private string confirmPassword;
+    private DateTime DOB;
+    private bool loggedIn = false;
+
+
+    private void Register_Click()
+    {
+        loggedIn = true;
+    }
+
+    private string Register()
+    {
+        if (loggedIn == true)
+        {
+            return "You are registered";
+        }
+        else
+        {
+            return "You are not registered";
+        }
+       
+    }
+}
